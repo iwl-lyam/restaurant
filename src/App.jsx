@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate, usePa
 import Dashboard from './components/Dashboard/Dashboard';
 import Preferences from './components/Preferences/Preferences';
 import Navbar from './components/Navbar.jsx'
+import Menu from './components/Menu/Menu';
+import Products from './components/Menu/Products';
+import Product from './components/Menu/Product';
+
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -31,6 +35,10 @@ export default function App() {
           <Route path="/" exact element={<></>}/>
           <Route path="/dashboard" element={<Dashboard />}/>
           <Route path="/preferences" element={<Preferences />}/>
+          <Route path="/menu" element={<Menu />}>
+            <Route path="" element={<Products />} />
+            <Route path=":postSlug" element={<Product />} />
+          </Route>
         </Routes>
       </Router>
     </div>
