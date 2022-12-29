@@ -12,8 +12,7 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav ms-auto">
                         <Link className="nav-link text-white" to="/">Home</Link>
-                        <Link className="nav-link text-white" to="/dashboard">Dashboard</Link>
-                        <Link className="nav-link text-white" to="/preferences">Preferences</Link>
+                        <Link className="nav-link text-white" to="/order">Order</Link>
                         <Link className="nav-link text-white" to="/menu">Menu</Link>
                 </div>
                 </div>
