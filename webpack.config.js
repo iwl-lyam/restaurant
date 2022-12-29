@@ -2,11 +2,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/App.jsx",
   mode: "development",
   output: {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,5 +34,8 @@ module.exports = {
         use: ["file-loader"],
       }, 
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
 };
