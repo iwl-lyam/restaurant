@@ -1,9 +1,41 @@
-import React from "react";
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard';
+import Preferences from './components/Preferences/Preferences';
+import Navbar from './components/Navbar.jsx'
 
-const App = () => ( 
-    <div>
-        <h1>Hello React</h1>
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return (
+      <Component
+        {...props}
+        router={{ location, navigate, params }}
+      />
+    );
+  }
+
+  return ComponentWithRouterProp;
+}
+
+export default function App() {
+  return (
+    <div className="wrapper">
+      <Router>
+        <Navbar /> 
+        <h1>Application</h1>
+        <Routes>
+          <Route path="/" exact element={<></>}/>
+          <Route path="/dashboard" element={<Dashboard />}/>
+          <Route path="/preferences" element={<Preferences />}/>
+        </Routes>
+      </Router>
     </div>
-);
+  );
+}
 
-export default App;
+
+
