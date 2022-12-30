@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import crisps from './crisps.jpg'
 import pork from './pork.jpg'
@@ -91,8 +90,8 @@ function Posts() {
             />
           </div>
           <div className="col-lg-5">
-            <h1 className="font-weight-light">Cheesecake</h1>
-            <p>Homemade Desert</p>
+            <h1 className="font-weight-light">Banoffee Cheesecake</h1>
+            <p>Tasty banana toffee cheese desert</p>
           </div>
         </div>
 

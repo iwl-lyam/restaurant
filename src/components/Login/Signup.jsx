@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types'
-import { Link, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 import './Login.css';
 
 async function loginUser(credentials) {
-    return fetch('http://localhost:3030/login', {
+    return fetch('http://localhost:3030/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -16,8 +15,9 @@ async function loginUser(credentials) {
       .then(data => data.json())
 }
 
-export default function Login() {
-  const navigate = useNavigate()
+export default function Signup({ setToken }) {
+    const navigate = useNavigate();
+
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
@@ -27,14 +27,12 @@ export default function Login() {
       username,
       password
     });
-    setToken(token);
-    navigate('/order')
+    navigate('/login')
   }
 
   return(
     <div className="login-wrapper">
-      <h1>Log In</h1>
-      <Link to='/signup'>Signup</Link>
+      <h1>Sign up</h1>
       <form onSubmit={handleSubmit}>
         <label>
           <p>Username</p>
@@ -51,3 +49,7 @@ export default function Login() {
     </div>
   )
 }
+
+Signup.propTypes = {
+  setToken: PropTypes.func.isRequired
+};
