@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
 import Login from '../Login/Login';
-import useToken from '../Login/useToken'
+import {signedIn} from '../Login/useToken'
 import {useNavigate} from 'react-router-dom'
 
 export default function Order() {
   const navigate = useNavigate();
 
-  const { token, setToken } = useToken();
   const [form, setForm] = React.useState({
     pork: false,
     tofu: false
   });
 
-  if(!token) {
-    return <Login setToken={setToken} />
+  if(!signedIn()) {
+    navigate('/login')
   }
 
   const handleChange = () => {
