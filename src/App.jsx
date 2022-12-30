@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Order from './components/Order/Order';
+import Confirm from './components/Order/Submit';
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Menu from './components/Menu/Menu';
@@ -18,6 +19,7 @@ ReactDOM.render(
           <Route path="/menu" element={<Menu />}>
             <Route path="" element={<Products />} />
           </Route>
+          <Route path="/confirm" element={<Confirm />} />
         </Routes>
         <Footer />
       </Router>
