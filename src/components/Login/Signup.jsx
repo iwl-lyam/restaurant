@@ -15,7 +15,7 @@ async function loginUser(credentials) {
       .then(data => data.json())
 }
 
-export default function Signup({ setToken }) {
+export default function Signup() {
     const navigate = useNavigate();
 
   const [username, setUserName] = useState();
@@ -49,7 +49,3 @@ export default function Signup({ setToken }) {
     </div>
   )
 }
-
-Signup.propTypes = {
-  setToken: PropTypes.func.isRequired
-};

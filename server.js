@@ -5,6 +5,7 @@ const app = express();
 const bodyparser = require("body-parser")
 const MongoClient = require('mongodb').MongoClient;
 const {uid} = require('uid/secure')
+const {WebSocketServer} = require("ws")
 require('dotenv').config()
 
 app.use(cors());
@@ -71,3 +72,18 @@ app.post('/order', (req, res) => {
 })
 
 app.listen(3030, () => console.log('API is running on http://localhost:3030/login'));
+
+const wss = new WebSocketServer({ port: 3031 });
+
+wss.on('connection', function connection(ws) {
+    setInterval(() => {
+        MongoClient.connect(process.env.URI, async (err, db) => {
+            if (err) throw err
+    
+            db = db.db('orders');
+    
+            let cl = db.collection('orders')
+            ws.send(cl.find())
+        }, 30000)
+    })
+});
